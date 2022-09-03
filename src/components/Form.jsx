@@ -30,6 +30,9 @@ const Form = () => {
   return (
     <>
     <div className="md:w-full h-full lg:w-1/2 mx-5 relative">
+      <h2 className="font-black text-3xl text-center mb-10">
+        Creacion de tareas
+      </h2>
       {/* Inicia el Formulario */}
       <form
         onSubmit={handleSubmit}
@@ -75,7 +78,7 @@ const Form = () => {
           >
             DESCRIPCION
           </label>
-          <textarea name="" className="placeholder-gray-400 border-2 rounded-md pl-1 pt-1 text-gray-700" id="" cols="50" rows="5" placeholder="Descripcion de tarea"></textarea>
+          <textarea name="" className="placeholder-gray-400 border-2 rounded-md pl-1 pt-1 text-gray-700 w-full mt-2" id="" cols="50" rows="5" placeholder="Descripcion de tarea"></textarea>
         </div>
 
 
