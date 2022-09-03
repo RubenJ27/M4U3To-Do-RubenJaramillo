@@ -1,30 +1,50 @@
 import { useState } from "react";
+import AlertError from "./AlertError";
 
 const Form = () => {
 
-    const [user, setUser] = useState("");
-    const [phone, setPhone] = useState("");
-    const [email, setEmail] = useState("");
+    const [title, setTitle] = useState("");
     const [date, setDate] = useState("");
+    const [description, setDescription] = useState("");
 
     const [error, setError] = useState(false);
 
     const handleSubmit = (e) => {
-      e.preventDefault();
+      e.preventDefault(); 
 
-      if ([user, phone, email, date].includes("")) {
+      if ([title, date, description].includes("")) {
         setError(true);
+        errorModal();
         return;
       }
-
       setError(false);
 
       /* Limpiar formulario */
-      setUser("");
-      setPhone("");
-      setEmail("");
+      setTitle("");
       setDate("");
+      setDescription("")
+
+      okModal();
     } 
+
+    const okModal = () => {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Ejercicio completado 😎',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    };
+
+    const errorModal = () => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+        footer: '<a href="">Why do I have this issue?</a>'
+      })
+    };
 
  
   return (
@@ -50,8 +70,8 @@ const Form = () => {
             type="text"
             placeholder="Nombres"
             className="border-2 w-full p-2 mt-2 rounded-md placeholder-gray-400"
-            value={user}
-            onChange={(e) => setUser(e.target.value)}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         
@@ -78,7 +98,13 @@ const Form = () => {
           >
             DESCRIPCION
           </label>
-          <textarea name="" className="placeholder-gray-400 border-2 rounded-md pl-1 pt-1 text-gray-700 w-full mt-2" id="" cols="50" rows="5" placeholder="Descripcion de tarea"></textarea>
+          <textarea 
+          type="text"
+          id="description"
+          placeholder="Descripcion de tarea"  
+          className="placeholder-gray-400 w-full p-2 mt-2 border-2 rounded-md text-gray-700" 
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}></textarea>
         </div>
 
 
@@ -89,6 +115,8 @@ const Form = () => {
         />
       </form>
     </div>
+
+    
 
   </>
 
