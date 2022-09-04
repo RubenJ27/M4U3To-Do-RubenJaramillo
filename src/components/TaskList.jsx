@@ -1,28 +1,32 @@
+import { Tasks } from "./Tasks";
 
-import { Tasks } from './Tasks';
-
-export const TaskList = ({tasks}) => {
-
-  console.log()
+export const TaskList = ({ tasks, setTask }) => {
+  console.log();
 
   return (
     <div className="md:w-full lg:w-1/2 mx-5 mb-10 md:h-screen overflow-scroll">
-      
-      {tasks && tasks.length ? (<>
-    
-        <h2 className="font-black text-3xl text-center mb-10">Tareas pendientes</h2>
-        {tasks.map( (task, ) => {
-        return(
-          <Tasks 
-          /* key={index} *//* esto es mala practica */
-          key={task.id}
-          task={task}
-          /> 
-        )
-      })}
-      </>) : <h2 className="font-black text-3xl text-center mb-10">No tengo tareas pendientes</h2>}
-      
-      
+      {tasks && tasks.length ? (
+        <>
+          <h2 className="font-black text-3xl text-center mb-10">
+            Tareas pendientes
+          </h2>
+
+          {tasks.map((task) => {
+            return (
+              <Tasks
+                /* key={index} */ /* esto es mala practica */
+                key={task.id}
+                task={task}
+                setTask={setTask}
+              />
+            );
+          })}
+        </>
+      ) : (
+        <h2 className="font-black text-3xl text-center mb-10">
+          No tengo tareas pendientes
+        </h2>
+      )}
     </div>
   );
 };

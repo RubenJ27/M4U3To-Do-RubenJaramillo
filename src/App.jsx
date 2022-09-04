@@ -7,6 +7,8 @@ import { useState } from "react";
 function App() {
 
   const [tasks, setTasks] = useState([]);
+  const [task, setTask] = useState({});
+ /*  console.log(task); */
 
 
   return (
@@ -19,8 +21,8 @@ function App() {
         />
         <TaskList 
         tasks={tasks}
+        setTask={setTask}
         />
-    
       </div>
     </div>
   );
