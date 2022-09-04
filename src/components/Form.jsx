@@ -1,12 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 /* import AlertError from "./AlertError"; */
 
-const Form = ({ tasks, setTasks }) => {
+const Form = ({ tasks, setTasks, task, setTask }) => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
 
   const [error, setError] = useState(false);
+  
+
+    useEffect( () => {
+      if (Object.keys(task).length > 0) {
+        setTitle(task.title);
+        setDate(task.date);
+        setDescription(task.description);
+      }
+    }, [task]);
 
   const generarId = () => {
     const id = Math.random().toString(20).substr(2);
@@ -38,10 +47,20 @@ const Form = ({ tasks, setTasks }) => {
       title,
       date,
       description,
-      id: generarId()
     };
 
-    setTasks([...tasks, objectTasks]);
+    if ( task.id ) {
+      /* Editando la tarea */
+      const updatedTask = tasks.map( taskState => taskState.id === task.id ? objectTasks : taskState);
+      setTasks(updatedTask);
+      setTask({});
+    }else{
+      /* Nuevo tarea */
+      objectTasks.id = generarId();
+      setTasks([...tasks, objectTasks]);
+    }
+
+    
   };
 
   const okModal = () => {
@@ -124,11 +143,20 @@ const Form = ({ tasks, setTasks }) => {
             ></textarea>
           </div>
 
-          <input
+          {!task.id ? (
+            <input
             type="submit"
             className="bg-blue-600 w-full p-2 text-white uppercase font-bold rounded-full hover:bg-blue-700 transition-colors cursor-pointer"
             value="Crear tarea"
           />
+          ) : (
+            <input
+            type="submit"
+            className="bg-purple-600 w-full p-2 text-white uppercase font-bold rounded-full hover:bg-purple-700 transition-colors cursor-pointer"
+            value="Actualizar tarea"
+          />
+          )}
+
         </form>
       </div>
     </>

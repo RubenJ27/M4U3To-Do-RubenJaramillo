@@ -3,7 +3,8 @@ import React from 'react'
 export const Tasks = ({ task, setTask }) => {
 
   const {title, date, description} = task; /* desestructuracion */
-  console.log(setTask);
+ /*  console.log(task); */
+
 
   return (
     <div className="bg-white shadow-md px-5 py-10 rounded-lg mb-3">

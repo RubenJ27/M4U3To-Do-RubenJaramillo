@@ -1,7 +1,7 @@
 import { Tasks } from "./Tasks";
 
 export const TaskList = ({ tasks, setTask }) => {
-  console.log();
+
 
   return (
     <div className="md:w-full lg:w-1/2 mx-5 mb-10 md:h-screen overflow-scroll">

@@ -16,8 +16,10 @@ function App() {
       <Header />
       <div className="md:mx-36 my-1 md:flex">
         <Form 
+        task={task}
         tasks={tasks}
         setTasks={setTasks}
+        setTask={setTask}
         />
         <TaskList 
         tasks={tasks}
