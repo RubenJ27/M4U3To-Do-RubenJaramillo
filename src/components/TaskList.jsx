@@ -1,6 +1,6 @@
 import { Tasks } from "./Tasks";
 
-export const TaskList = ({ tasks, setTask }) => {
+export const TaskList = ({ tasks, setTask, deleteTask }) => {
 
 
   return (
@@ -18,6 +18,7 @@ export const TaskList = ({ tasks, setTask }) => {
                 key={task.id}
                 task={task}
                 setTask={setTask}
+                deleteTask={deleteTask}
               />
             );
           })}

@@ -1,9 +1,16 @@
 import React from 'react'
 
-export const Tasks = ({ task, setTask }) => {
+export const Tasks = ({ task, setTask, deleteTask }) => {
 
-  const {title, date, description} = task; /* desestructuracion */
+  const {title, date, description, id} = task; /* desestructuracion */
  /*  console.log(task); */
+
+ const handleDelete = () => {
+  const response = confirm('¿Desea eliminar esta tarea? 🤔')
+  if (response) {
+    deleteTask(id);
+  }
+ }
 
 
   return (
@@ -27,7 +34,10 @@ export const Tasks = ({ task, setTask }) => {
           type="button" 
           onClick={ () => setTask(task) }
           >Actualizar</button>
-          <button type="button" className='bg-red-600 text-white hover:bg-red-700 mt-4 py-2 px-10 rounded-md font-bold'>Eliminar</button>
+          <button 
+          type="button" 
+          onClick={ handleDelete }
+          className='bg-red-600 text-white hover:bg-red-700 mt-4 py-2 px-10 rounded-md font-bold'>Eliminar</button>
         </div>
 
       </div>

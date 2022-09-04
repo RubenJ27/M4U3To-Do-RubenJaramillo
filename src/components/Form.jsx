@@ -7,21 +7,20 @@ const Form = ({ tasks, setTasks, task, setTask }) => {
   const [description, setDescription] = useState("");
 
   const [error, setError] = useState(false);
-  
 
-    useEffect( () => {
-      if (Object.keys(task).length > 0) {
-        setTitle(task.title);
-        setDate(task.date);
-        setDescription(task.description);
-      }
-    }, [task]);
+  useEffect(() => {
+    if (Object.keys(task).length > 0) {
+      setTitle(task.title);
+      setDate(task.date);
+      setDescription(task.description);
+    }
+  }, [task]);
 
   const generarId = () => {
     const id = Math.random().toString(20).substr(2);
 
     return id;
-  } 
+  };
   // Validacion formulario
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,18 +48,19 @@ const Form = ({ tasks, setTasks, task, setTask }) => {
       description,
     };
 
-    if ( task.id ) {
+    if (task.id) {
       /* Editando la tarea */
-      const updatedTask = tasks.map( taskState => taskState.id === task.id ? objectTasks : taskState);
+      objectTasks.id = task.id;
+      const updatedTask = tasks.map((taskState) =>
+        taskState.id === task.id ? objectTasks : taskState
+      );
       setTasks(updatedTask);
       setTask({});
-    }else{
+    } else {
       /* Nuevo tarea */
       objectTasks.id = generarId();
       setTasks([...tasks, objectTasks]);
     }
-
-    
   };
 
   const okModal = () => {
@@ -145,18 +145,17 @@ const Form = ({ tasks, setTasks, task, setTask }) => {
 
           {!task.id ? (
             <input
-            type="submit"
-            className="bg-blue-600 w-full p-2 text-white uppercase font-bold rounded-full hover:bg-blue-700 transition-colors cursor-pointer"
-            value="Crear tarea"
-          />
+              type="submit"
+              className="bg-blue-600 w-full p-2 text-white uppercase font-bold rounded-full hover:bg-blue-700 transition-colors cursor-pointer"
+              value="Crear tarea"
+            />
           ) : (
             <input
-            type="submit"
-            className="bg-purple-600 w-full p-2 text-white uppercase font-bold rounded-full hover:bg-purple-700 transition-colors cursor-pointer"
-            value="Actualizar tarea"
-          />
+              type="submit"
+              className="bg-purple-600 w-full p-2 text-white uppercase font-bold rounded-full hover:bg-purple-700 transition-colors cursor-pointer"
+              value="Actualizar tarea"
+            />
           )}
-
         </form>
       </div>
     </>
