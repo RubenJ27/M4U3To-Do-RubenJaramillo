@@ -1,19 +1,23 @@
 import React from 'react'
 
-export const Tasks = () => {
+export const Tasks = ({task}) => {
+
+  const {title, date, description} = task; /* desestructuracion */
+ 
+
   return (
     <div className="bg-white shadow-md px-5 py-10 rounded-lg mb-3">
         <p className="font-bold mb-3 text-gray-700 uppercase">
           Titulo: {""}
-          <span className="font-normal normal-case">Crear API</span>
+          <span className="font-normal normal-case">{title}</span>
         </p>
         <p className="font-bold mb-3 text-gray-700 uppercase">
           Fecha: {""}
-          <span className="font-normal normal-case">28-07-2022</span>
+          <span className="font-normal normal-case">{date}</span>
         </p>
         <p className="font-bold mb-3 text-gray-700 uppercase">
           Descripcion: {""}
-          <span className="font-normal normal-case">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium nulla repellat optio, laborum impedit minima unde nisi labore reprehenderit laboriosam dolorem expedita. Reiciendis, maiores quos odio ipsam illum deserunt vitae.</span>
+          <span className="font-normal normal-case">{description}</span>
         </p>
       </div>
   )
