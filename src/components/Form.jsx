@@ -85,7 +85,7 @@ const Form = ({ tasks, setTasks, task, setTask }) => {
   return (
     <>
       <div className="md:w-full h-full lg:w-1/2 mx-5 relative">
-        <h2 className="font-black text-3xl text-center mb-10">
+        <h2 className="font-black text-3xl text-center mb-10 text-white">
           Creacion de tareas
         </h2>
         {/* Inicia el Formulario */}
